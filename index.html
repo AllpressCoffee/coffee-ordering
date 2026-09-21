@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Allpress Coffee Bar</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f2ec;
+    color: #222;
+}
+
+header {
+    background: #171717;
+    color: white;
+    padding: 25px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+header p {
+    margin: 6px 0 0;
+    color: #ccc;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.coffee {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 18px;
+    cursor: pointer;
+}
+
+.coffee:hover {
+    border: 2px solid #111;
+}
+
+.coffee h3 {
+    margin: 0 0 5px;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.order-box {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.total {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.checkout {
+    width: 100%;
+    background: #111;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.clear {
+    width: 100%;
+    margin-top: 10px;
+    background: white;
+    border: 1px solid #aaa;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+#confirmation {
+    display: none;
+    background: #eaf6ea;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+@media(max-width:600px) {
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ALLPRESS COFFEE BAR ☕</h1>
+<p>Order • Pay • Self-Collect</p>
+</header>
+
+<div class="container">
+
+<h2>Coffee</h2>
+
+<div class="menu-grid">
+
+<div class="coffee" onclick="addItem('Espresso',4.50)">
+<h3>Espresso</h3>
+<p>Hot</p>
+<span class="price">$4.50</span>
+</div>
+
+<div class="coffee" onclick="addItem('Americano (Hot)',5.00)">
+<h3>Americano</h3>
+<p>Hot</p>
+<span class="price">$5.00</span>
+</div>
+
+<div class="coffee" onclick="addItem('Americano (Cold)',5.90)">
+<h3>Americano</h3>
+<p>Cold</p>
+<span class="price">$5.90</span>
+</div>
+
+<div class="coffee" onclick="addItem('Cappuccino (Hot)',5.90)">
+<h3>Cappuccino</h3>
+<p>Hot</p>
+<span class="price">$5.90</span>
+</div>
+
+<div class="coffee" onclick="addItem('Cappuccino (Cold)',6.50)">
+<h3>Cappuccino</h3>
+<p>Cold</p>
+<span class="price">$6.50</span>
+</div>
+
+<div class="coffee" onclick="addItem('Mocha (Hot)',6.90)">
+<h3>Mocha</h3>
+<p>Hot</p>
+<span class="price">$6.90</span>
+</div>
+
+<div class="coffee" onclick="addItem('Mocha (Cold)',7.50)">
+<h3>Mocha</h3>
+<p>Cold</p>
+<span class="price">$7.50</span>
+</div>
+
+<div class="coffee" onclick="addItem('Latte (Hot)',5.90)">
+<h3>Latte</h3>
+<p>Hot</p>
+<span class="price">$5.90</span>
+</div>
+
+<div class="coffee" onclick="addItem('Latte (Cold)',6.50)">
+<h3>Latte</h3>
+<p>Cold</p>
+<span class="price">$6.50</span>
+</div>
+
+<div class="coffee" onclick="addItem('Hazelnut Latte (Hot)',6.50)">
+<h3>Hazelnut Latte</h3>
+<p>Hot</p>
+<span class="price">$6.50</span>
+</div>
+
+<div class="coffee" onclick="addItem('Hazelnut Latte (Cold)',6.90)">
+<h3>Hazelnut Latte</h3>
+<p>Cold</p>
+<span class="price">$6.90</span>
+</div>
+
+<div class="coffee" onclick="addItem('Caramel Latte (Hot)',6.50)">
+<h3>Caramel Latte</h3>
+<p>Hot</p>
+<span class="price">$6.50</span>
+</div>
+
+<div class="coffee" onclick="addItem('Caramel Latte (Cold)',6.90)">
+<h3>Caramel Latte</h3>
+<p>Cold</p>
+<span class="price">$6.90</span>
+</div>
+
+</div>
+
+
+<h2>Add-ons</h2>
+
+<div class="menu-grid">
+
+<div class="coffee" onclick="addItem('Oat Milk',1)">
+<h3>Oat Milk</h3>
+<span class="price">+$1.00</span>
+</div>
+
+<div class="coffee" onclick="addItem('Soy Milk',1)">
+<h3>Soy Milk</h3>
+<span class="price">+$1.00</span>
+</div>
+
+<div class="coffee" onclick="addItem('Extra Espresso Shot',1.50)">
+<h3>Extra Espresso Shot</h3>
+<span class="price">+$1.50</span>
+</div>
+
+<div class="coffee" onclick="addItem('Flavoured Syrup',0.80)">
+<h3>Flavoured Syrup</h3>
+<span class="price">+$0.80</span>
+</div>
+
+</div>
+
+
+<div class="order-box">
+
+<h2>Your Order</h2>
+
+<div id="orderList">
+<p>No drinks added yet.</p>
+</div>
+
+<div class="total">
+Total: $<span id="total">0.00</span>
+</div>
+
+<label>Customer Name</label>
+
+<input
+type="text"
+id="customerName"
+placeholder="Example: Joanne"
+>
+
+<label>Special Request (Optional)</label>
+
+<textarea
+id="request"
+placeholder="Example: Less sugar, no ice"
+></textarea>
+
+<button class="checkout" onclick="checkout()">
+CHECKOUT
+</button>
+
+<button class="clear" onclick="clearOrder()">
+Clear Order
+</button>
+
+</div>
+
+
+<div id="confirmation"></div>
+
+</div>
+
+
+<script>
+
+let order = [];
+let total = 0;
+
+
+function addItem(name, price) {
+
+    let existing = order.find(item => item.name === name);
+
+    if(existing) {
+        existing.quantity++;
+    }
+    else {
+        order.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    total += price;
+
+    updateOrder();
+}
+
+
+function updateOrder() {
+
+    const list = document.getElementById("orderList");
+
+    list.innerHTML = "";
+
+    if(order.length === 0) {
+
+        list.innerHTML = "<p>No drinks added yet.</p>";
+
+    }
+
+    order.forEach(item => {
+
+        const row = document.createElement("div");
+
+        row.className = "order-item";
+
+        row.innerHTML =
+        "<span>" +
+        item.quantity +
+        " × " +
+        item.name +
+        "</span>" +
+        "<span>$" +
+        (item.price * item.quantity).toFixed(2) +
+        "</span>";
+
+        list.appendChild(row);
+
+    });
+
+    document.getElementById("total").innerText =
+    total.toFixed(2);
+}
+
+
+function clearOrder() {
+
+    order = [];
+    total = 0;
+
+    updateOrder();
+
+}
+
+
+function checkout() {
+
+    const customer =
+    document.getElementById("customerName").value;
+
+    const request =
+    document.getElementById("request").value;
+
+    if(order.length === 0) {
+
+        alert("Please select your coffee.");
+
+        return;
+    }
+
+    if(customer.trim() === "") {
+
+        alert("Please enter your name.");
+
+        return;
+    }
+
+    const orderNumber =
+    "A" + Math.floor(100 + Math.random() * 900);
+
+    const confirmation =
+    document.getElementById("confirmation");
+
+    confirmation.style.display = "block";
+
+    confirmation.innerHTML =
+    "<h2>Order " +
+    orderNumber +
+    " ✅</h2>" +
+    "<p>Thank you, <strong>" +
+    customer +
+    "</strong>.</p>" +
+    "<p>Total: <strong>$" +
+    total.toFixed(2) +
+    "</strong></p>" +
+    "<p>Please proceed with payment and self-collect at Coffee Bar.</p>";
+
+    confirmation.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
