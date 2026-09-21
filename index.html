@@ -3,137 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Allpress Coffee Bar</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f2ec;
-    color: #222;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f2ec;
+  color: #222;
 }
 
 header {
-    background: #171717;
-    color: white;
-    padding: 25px 20px;
+  background: #171717;
+  color: white;
+  padding: 24px 18px;
+  text-align: center;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 26px;
+  margin: 0;
+  font-size: 25px;
 }
 
 header p {
-    margin: 6px 0 0;
-    color: #ccc;
+  margin: 7px 0 0;
+  color: #ddd;
+  font-size: 14px;
 }
 
 .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  padding: 18px;
 }
 
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+h2 {
+  margin-top: 8px;
 }
 
-.coffee {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 18px;
-    cursor: pointer;
+.product {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
 }
 
-.coffee:hover {
-    border: 2px solid #111;
+.product h3 {
+  margin: 0 0 12px;
 }
 
-.coffee h3 {
-    margin: 0 0 5px;
+.option-row {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
 }
 
-.price {
-    font-weight: bold;
+.temp-btn {
+  border: 1px solid #222;
+  background: white;
+  padding: 9px 15px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.order-box {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    margin-top: 25px;
+.temp-btn.active {
+  background: #171717;
+  color: white;
 }
 
-.order-item {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
+label {
+  display: block;
+  margin: 11px 0 6px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
+select, input, textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.qty button, .cart-controls button {
+  border: 1px solid #aaa;
+  background: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.add-btn, .checkout-btn, .paid-btn {
+  width: 100%;
+  padding: 14px;
+  background: #171717;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.cart {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  margin-top: 22px;
+  margin-bottom: 30px;
+}
+
+.cart-item {
+  border-bottom: 1px solid #eee;
+  padding: 13px 0;
+}
+
+.cart-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cart-name {
+  font-weight: bold;
+}
+
+.cart-detail {
+  color: #666;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 9px;
+}
+
+.remove {
+  border: 0 !important;
+  background: transparent !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  color: #b00020;
+  font-size: 13px !important;
+  margin-left: 7px;
 }
 
 .total {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 20px 0;
+  font-size: 21px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
 }
 
-.checkout {
-    width: 100%;
-    background: #111;
-    color: white;
-    border: none;
-    padding: 16px;
-    border-radius: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+.clear-btn, .back-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 9px;
+  background: white;
+  border: 1px solid #bbb;
+  border-radius: 9px;
+  cursor: pointer;
 }
 
-.clear {
-    width: 100%;
-    margin-top: 10px;
-    background: white;
-    border: 1px solid #aaa;
-    padding: 12px;
-    border-radius: 10px;
+#paymentPage {
+  display: none;
 }
 
-#confirmation {
-    display: none;
-    background: #eaf6ea;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 20px;
+.payment-box {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 15px;
 }
 
-@media(max-width:600px) {
+.payment-title {
+  text-align: center;
+}
 
-    .menu-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.qr-placeholder {
+  width: 230px;
+  height: 230px;
+  max-width: 100%;
+  margin: 20px auto;
+  border: 3px dashed #999;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #777;
+  font-weight: bold;
+  padding: 20px;
+}
 
-    header h1 {
-        font-size: 22px;
-    }
+.payment-total {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.payment-note {
+  text-align: center;
+  color: #555;
+  line-height: 1.5;
+}
+
+.success {
+  display: none;
+  text-align: center;
+  background: #f1f7f1;
+  border-radius: 14px;
+  padding: 22px;
+  margin-top: 18px;
+}
+
+.order-number {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.pending {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.small-note {
+  font-size: 13px;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 12px; }
+  header h1 { font-size: 21px; }
 }
 </style>
 </head>
@@ -141,290 +265,477 @@ input, textarea {
 <body>
 
 <header>
-<h1>ALLPRESS COFFEE BAR ☕</h1>
-<p>Order • Pay • Self-Collect</p>
+  <h1>ALLPRESS COFFEE BAR ☕</h1>
+  <p>Order • Pay • Self-Collect</p>
 </header>
 
-<div class="container">
+<div class="container" id="orderPage">
 
-<h2>Coffee</h2>
+<h2>Coffee Menu</h2>
 
-<div class="menu-grid">
+<div id="products"></div>
 
-<div class="coffee" onclick="addItem('Espresso',4.50)">
-<h3>Espresso</h3>
-<p>Hot</p>
-<span class="price">$4.50</span>
-</div>
+<div class="cart">
+  <h2>Your Order</h2>
 
-<div class="coffee" onclick="addItem('Americano (Hot)',5.00)">
-<h3>Americano</h3>
-<p>Hot</p>
-<span class="price">$5.00</span>
-</div>
+  <div id="cartItems">
+    <p id="emptyCart">Your cart is empty.</p>
+  </div>
 
-<div class="coffee" onclick="addItem('Americano (Cold)',5.90)">
-<h3>Americano</h3>
-<p>Cold</p>
-<span class="price">$5.90</span>
-</div>
+  <div class="total">
+    <span>Total</span>
+    <span id="total">$0.00</span>
+  </div>
 
-<div class="coffee" onclick="addItem('Cappuccino (Hot)',5.90)">
-<h3>Cappuccino</h3>
-<p>Hot</p>
-<span class="price">$5.90</span>
-</div>
+  <label>Customer Name</label>
+  <input id="customerName" type="text" placeholder="Enter your name">
 
-<div class="coffee" onclick="addItem('Cappuccino (Cold)',6.50)">
-<h3>Cappuccino</h3>
-<p>Cold</p>
-<span class="price">$6.50</span>
-</div>
+  <label>Special Request (Optional)</label>
+  <textarea id="specialRequest" rows="3"
+    placeholder="Example: Less sugar, no ice"></textarea>
 
-<div class="coffee" onclick="addItem('Mocha (Hot)',6.90)">
-<h3>Mocha</h3>
-<p>Hot</p>
-<span class="price">$6.90</span>
-</div>
+  <br><br>
 
-<div class="coffee" onclick="addItem('Mocha (Cold)',7.50)">
-<h3>Mocha</h3>
-<p>Cold</p>
-<span class="price">$7.50</span>
-</div>
-
-<div class="coffee" onclick="addItem('Latte (Hot)',5.90)">
-<h3>Latte</h3>
-<p>Hot</p>
-<span class="price">$5.90</span>
-</div>
-
-<div class="coffee" onclick="addItem('Latte (Cold)',6.50)">
-<h3>Latte</h3>
-<p>Cold</p>
-<span class="price">$6.50</span>
-</div>
-
-<div class="coffee" onclick="addItem('Hazelnut Latte (Hot)',6.50)">
-<h3>Hazelnut Latte</h3>
-<p>Hot</p>
-<span class="price">$6.50</span>
-</div>
-
-<div class="coffee" onclick="addItem('Hazelnut Latte (Cold)',6.90)">
-<h3>Hazelnut Latte</h3>
-<p>Cold</p>
-<span class="price">$6.90</span>
-</div>
-
-<div class="coffee" onclick="addItem('Caramel Latte (Hot)',6.50)">
-<h3>Caramel Latte</h3>
-<p>Hot</p>
-<span class="price">$6.50</span>
-</div>
-
-<div class="coffee" onclick="addItem('Caramel Latte (Cold)',6.90)">
-<h3>Caramel Latte</h3>
-<p>Cold</p>
-<span class="price">$6.90</span>
+  <button class="checkout-btn" onclick="checkout()">CHECKOUT</button>
+  <button class="clear-btn" onclick="clearCart()">Clear Order</button>
 </div>
 
 </div>
 
 
-<h2>Add-ons</h2>
+<div class="container" id="paymentPage">
 
-<div class="menu-grid">
+<div class="payment-box">
 
-<div class="coffee" onclick="addItem('Oat Milk',1)">
-<h3>Oat Milk</h3>
-<span class="price">+$1.00</span>
-</div>
+  <h2 class="payment-title">Payment</h2>
 
-<div class="coffee" onclick="addItem('Soy Milk',1)">
-<h3>Soy Milk</h3>
-<span class="price">+$1.00</span>
-</div>
+  <h3>Order Summary</h3>
+  <div id="paymentSummary"></div>
 
-<div class="coffee" onclick="addItem('Extra Espresso Shot',1.50)">
-<h3>Extra Espresso Shot</h3>
-<span class="price">+$1.50</span>
-</div>
+  <div class="payment-total" id="paymentTotal">$0.00</div>
 
-<div class="coffee" onclick="addItem('Flavoured Syrup',0.80)">
-<h3>Flavoured Syrup</h3>
-<span class="price">+$0.80</span>
-</div>
+  <hr>
 
-</div>
+  <h2 class="payment-title">PAYNOW</h2>
 
+  <div class="qr-placeholder">
+    PAYNOW QR CODE<br><br>
+    QR IMAGE WILL BE PLACED HERE
+  </div>
 
-<div class="order-box">
+  <p class="payment-note">
+    Please scan the QR code to make payment.<br>
+    After payment, tap the button below.
+  </p>
 
-<h2>Your Order</h2>
+  <button class="paid-btn" onclick="paid()">I HAVE PAID</button>
 
-<div id="orderList">
-<p>No drinks added yet.</p>
-</div>
+  <button class="back-btn" onclick="backToOrder()">← Back to Order</button>
 
-<div class="total">
-Total: $<span id="total">0.00</span>
-</div>
+  <div class="success" id="successBox">
+    <div>Thank you!</div>
 
-<label>Customer Name</label>
+    <div class="order-number" id="orderNumber"></div>
 
-<input
-type="text"
-id="customerName"
-placeholder="Example: Joanne"
->
+    <div class="pending">
+      Payment Pending Verification
+    </div>
 
-<label>Special Request (Optional)</label>
+    <p>Please collect your order at the Coffee Bar.</p>
 
-<textarea
-id="request"
-placeholder="Example: Less sugar, no ice"
-></textarea>
-
-<button class="checkout" onclick="checkout()">
-CHECKOUT
-</button>
-
-<button class="clear" onclick="clearOrder()">
-Clear Order
-</button>
+    <p class="small-note">
+      Our staff will verify your PayNow payment before preparing/releasing the order.
+    </p>
+  </div>
 
 </div>
-
-
-<div id="confirmation"></div>
-
 </div>
 
 
 <script>
 
-let order = [];
-let total = 0;
+const menu = [
+  {
+    name: "Espresso",
+    prices: { Hot: 4.50 },
+    addons: false
+  },
+  {
+    name: "Americano",
+    prices: { Hot: 5.00, Cold: 5.90 },
+    addons: true
+  },
+  {
+    name: "Cappuccino",
+    prices: { Hot: 5.90, Cold: 6.50 },
+    addons: true
+  },
+  {
+    name: "Mocha",
+    prices: { Hot: 6.90, Cold: 7.50 },
+    addons: true
+  },
+  {
+    name: "Latte",
+    prices: { Hot: 5.90, Cold: 6.50 },
+    addons: true
+  },
+  {
+    name: "Hazelnut Latte",
+    prices: { Hot: 6.50, Cold: 6.90 },
+    addons: true
+  },
+  {
+    name: "Caramel Latte",
+    prices: { Hot: 6.50, Cold: 6.90 },
+    addons: true
+  }
+];
 
+const addons = [
+  { name: "No add-on", price: 0 },
+  { name: "Oat Milk", price: 1.00 },
+  { name: "Soy Milk", price: 1.00 },
+  { name: "Extra Espresso Shot", price: 1.50 },
+  { name: "Flavoured Syrup", price: 0.80 }
+];
 
-function addItem(name, price) {
+let cart = [];
 
-    let existing = order.find(item => item.name === name);
-
-    if(existing) {
-        existing.quantity++;
-    }
-    else {
-        order.push({
-            name: name,
-            price: price,
-            quantity: 1
-        });
-    }
-
-    total += price;
-
-    updateOrder();
+function money(value) {
+  return "$" + value.toFixed(2);
 }
 
+function renderProducts() {
 
-function updateOrder() {
+  const holder = document.getElementById("products");
+  holder.innerHTML = "";
 
-    const list = document.getElementById("orderList");
+  menu.forEach((item, index) => {
 
-    list.innerHTML = "";
+    const card = document.createElement("div");
+    card.className = "product";
 
-    if(order.length === 0) {
+    let tempHTML = "";
 
-        list.innerHTML = "<p>No drinks added yet.</p>";
-
-    }
-
-    order.forEach(item => {
-
-        const row = document.createElement("div");
-
-        row.className = "order-item";
-
-        row.innerHTML =
-        "<span>" +
-        item.quantity +
-        " × " +
-        item.name +
-        "</span>" +
-        "<span>$" +
-        (item.price * item.quantity).toFixed(2) +
-        "</span>";
-
-        list.appendChild(row);
-
+    Object.entries(item.prices).forEach(([temp, price], i) => {
+      tempHTML += `
+        <button
+          class="temp-btn ${i === 0 ? "active" : ""}"
+          onclick="selectTemp(${index}, '${temp}', this)">
+          ${temp} • ${money(price)}
+        </button>
+      `;
     });
 
-    document.getElementById("total").innerText =
-    total.toFixed(2);
+    let addonHTML = "";
+
+    if (item.addons) {
+      addonHTML = `
+        <label>Add-on</label>
+        <select id="addon-${index}">
+          ${addons.map((a, i) =>
+            `<option value="${i}">
+              ${a.name}${a.price ? " +" + money(a.price) : ""}
+            </option>`
+          ).join("")}
+        </select>
+      `;
+    }
+
+    card.innerHTML = `
+      <h3>${item.name}</h3>
+
+      <div class="option-row" id="temps-${index}">
+        ${tempHTML}
+      </div>
+
+      ${addonHTML}
+
+      <label>Quantity</label>
+
+      <div class="qty">
+        <button onclick="changeProductQty(${index}, -1)">−</button>
+        <span id="qty-${index}">1</span>
+        <button onclick="changeProductQty(${index}, 1)">+</button>
+      </div>
+
+      <button class="add-btn" onclick="addToCart(${index})">
+        ADD TO CART
+      </button>
+    `;
+
+    holder.appendChild(card);
+
+    item.selectedTemp = Object.keys(item.prices)[0];
+    item.qty = 1;
+  });
 }
 
+function selectTemp(index, temp, button) {
 
-function clearOrder() {
+  menu[index].selectedTemp = temp;
 
-    order = [];
-    total = 0;
+  document
+    .querySelectorAll("#temps-" + index + " .temp-btn")
+    .forEach(btn => btn.classList.remove("active"));
 
-    updateOrder();
-
+  button.classList.add("active");
 }
 
+function changeProductQty(index, amount) {
+
+  menu[index].qty += amount;
+
+  if (menu[index].qty < 1) {
+    menu[index].qty = 1;
+  }
+
+  document.getElementById("qty-" + index).textContent =
+    menu[index].qty;
+}
+
+function addToCart(index) {
+
+  const item = menu[index];
+
+  const temp = item.selectedTemp;
+  const basePrice = item.prices[temp];
+
+  let addonName = "No add-on";
+  let addonPrice = 0;
+
+  if (item.addons) {
+
+    const addonIndex =
+      Number(document.getElementById("addon-" + index).value);
+
+    addonName = addons[addonIndex].name;
+    addonPrice = addons[addonIndex].price;
+  }
+
+  const key =
+    item.name + "|" + temp + "|" + addonName;
+
+  const existing =
+    cart.find(c => c.key === key);
+
+  if (existing) {
+    existing.qty += item.qty;
+  } else {
+    cart.push({
+      key,
+      name: item.name,
+      temp,
+      addon: addonName,
+      unitPrice: basePrice + addonPrice,
+      qty: item.qty
+    });
+  }
+
+  item.qty = 1;
+  document.getElementById("qty-" + index).textContent = "1";
+
+  if (item.addons) {
+    document.getElementById("addon-" + index).value = "0";
+  }
+
+  renderCart();
+}
+
+function renderCart() {
+
+  const holder = document.getElementById("cartItems");
+
+  if (cart.length === 0) {
+    holder.innerHTML =
+      `<p id="emptyCart">Your cart is empty.</p>`;
+
+    document.getElementById("total").textContent = "$0.00";
+    return;
+  }
+
+  holder.innerHTML = "";
+
+  cart.forEach((item, index) => {
+
+    const row = document.createElement("div");
+    row.className = "cart-item";
+
+    let detail = item.temp;
+
+    if (item.addon !== "No add-on") {
+      detail += " • " + item.addon;
+    }
+
+    row.innerHTML = `
+      <div class="cart-top">
+
+        <div>
+          <div class="cart-name">${item.name}</div>
+          <div class="cart-detail">${detail}</div>
+        </div>
+
+        <strong>
+          ${money(item.unitPrice * item.qty)}
+        </strong>
+
+      </div>
+
+      <div class="cart-controls">
+
+        <button onclick="changeCartQty(${index}, -1)">−</button>
+
+        <strong>${item.qty}</strong>
+
+        <button onclick="changeCartQty(${index}, 1)">+</button>
+
+        <button class="remove"
+          onclick="removeItem(${index})">
+          Remove
+        </button>
+
+      </div>
+    `;
+
+    holder.appendChild(row);
+  });
+
+  document.getElementById("total").textContent =
+    money(getTotal());
+}
+
+function changeCartQty(index, amount) {
+
+  cart[index].qty += amount;
+
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function getTotal() {
+
+  return cart.reduce(
+    (sum, item) =>
+      sum + item.unitPrice * item.qty,
+    0
+  );
+}
+
+function clearCart() {
+
+  cart = [];
+  renderCart();
+}
 
 function checkout() {
 
-    const customer =
-    document.getElementById("customerName").value;
+  if (cart.length === 0) {
+    alert("Please add at least one item.");
+    return;
+  }
 
-    const request =
-    document.getElementById("request").value;
+  const name =
+    document.getElementById("customerName").value.trim();
 
-    if(order.length === 0) {
+  if (!name) {
+    alert("Please enter your name.");
+    return;
+  }
 
-        alert("Please select your coffee.");
+  let summary = "";
 
-        return;
+  cart.forEach(item => {
+
+    let detail = item.temp;
+
+    if (item.addon !== "No add-on") {
+      detail += " • " + item.addon;
     }
 
-    if(customer.trim() === "") {
+    summary += `
+      <div class="cart-item">
+        <div class="cart-top">
+          <div>
+            <strong>
+              ${item.qty} × ${item.name}
+            </strong>
+            <div class="cart-detail">
+              ${detail}
+            </div>
+          </div>
 
-        alert("Please enter your name.");
+          <strong>
+            ${money(item.unitPrice * item.qty)}
+          </strong>
+        </div>
+      </div>
+    `;
+  });
 
-        return;
-    }
+  document.getElementById("paymentSummary").innerHTML =
+    summary;
 
-    const orderNumber =
-    "A" + Math.floor(100 + Math.random() * 900);
+  document.getElementById("paymentTotal").textContent =
+    "Total: " + money(getTotal());
 
-    const confirmation =
-    document.getElementById("confirmation");
+  document.getElementById("orderPage").style.display =
+    "none";
 
-    confirmation.style.display = "block";
+  document.getElementById("paymentPage").style.display =
+    "block";
 
-    confirmation.innerHTML =
-    "<h2>Order " +
-    orderNumber +
-    " ✅</h2>" +
-    "<p>Thank you, <strong>" +
-    customer +
-    "</strong>.</p>" +
-    "<p>Total: <strong>$" +
-    total.toFixed(2) +
-    "</strong></p>" +
-    "<p>Please proceed with payment and self-collect at Coffee Bar.</p>";
+  document.getElementById("successBox").style.display =
+    "none";
 
-    confirmation.scrollIntoView({
-        behavior:"smooth"
-    });
-
+  window.scrollTo(0, 0);
 }
+
+function backToOrder() {
+
+  document.getElementById("paymentPage").style.display =
+    "none";
+
+  document.getElementById("orderPage").style.display =
+    "block";
+
+  window.scrollTo(0, 0);
+}
+
+function paid() {
+
+  const number =
+    "A" + Math.floor(1000 + Math.random() * 9000);
+
+  document.getElementById("orderNumber").textContent =
+    "Order #" + number;
+
+  document.getElementById("successBox").style.display =
+    "block";
+
+  document.querySelector(".paid-btn").style.display =
+    "none";
+
+  document.querySelector(".back-btn").style.display =
+    "none";
+
+  document.getElementById("successBox")
+    .scrollIntoView({ behavior: "smooth" });
+}
+
+renderProducts();
+renderCart();
 
 </script>
 
 </body>
+</html>
 </html>
